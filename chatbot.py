@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
+    print(f"Received request method: {request.method}")  # Log the request method
     data = request.get_json()
     intent = data['queryResult']['intent']['displayName']
 
@@ -16,6 +17,7 @@ def webhook():
         response = {"fulfillmentText": "Sorry, I didn't understand that."}
     
     return jsonify(response)
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  # Ensure the correct port is used
