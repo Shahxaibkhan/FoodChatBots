@@ -18,5 +18,7 @@ def webhook():
     return jsonify(response)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Use the PORT variable provided by Railway
-    app.run(host="0.0.0.0", port=port, debug=False)  # Disable debug mode in production
+    port = int(os.environ.get("PORT", 5000))  # Ensure the correct port is used
+    print(f"Flask app is running on port {port}")  # Log port info
+    app.run(host="0.0.0.0", port=port, debug=False)  # Bind to 0.0.0.0 for external access
+
